@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { getCoordinateData } from "./api/RestClient";
+import EmptyFrame from "./components/EmptyFrame";
+import Frame from "./components/Frame";
 
 function App() {
+  const [data, setData] = useState(null);
+  const [visibleData, setVisibleData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [minLongitute, setMinLongitute] = useState("");
   const [minLatitude, setMinLatitude] = useState("");
   const [maxLongitute, setMaxLongitute] = useState("");
@@ -10,6 +17,39 @@ function App() {
   const handleCoordinateInput = (e, setInput) => {
     setInput(e.target.value);
   };
+
+  const buildCoordinateString = () => {
+    return `${minLongitute},${minLatitude},${maxLongitute},${maxLatitude}`;
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      loadMoreData();
+    }
+  };
+
+  const loadMoreData = () => {
+    if (!isLoading) {
+      setIsLoading(true);
+
+      setTimeout(() => {
+        const newData = data.slice(visibleData.length, visibleData.length + 8);
+        setVisibleData((prevData) => [...prevData, ...newData]);
+        setIsLoading(false);
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
     <div>
@@ -56,7 +96,21 @@ function App() {
           />
         </StyledLabel>
       </StyledForm>
-      <button onClick={null}>Submit</button>
+      <button
+        onClick={() =>
+          getCoordinateData(buildCoordinateString, setData, setVisibleData)
+        }
+      >
+        Submit
+      </button>
+      <StyledContainer>
+        {data ? (
+          <Frame data={visibleData} isLoading={isLoading} />
+        ) : (
+          <EmptyFrame />
+        )}
+      </StyledContainer>
+
       {/* <h1>Total: {data.length}</h1> */}
     </div>
   );
@@ -79,4 +133,9 @@ const StyledLabel = styled.label`
   width: 200px;
   border-radius: 5px;
   align-items: center;
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
