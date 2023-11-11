@@ -18,9 +18,10 @@ const EmptyFrame = () => {
 export default EmptyFrame;
 
 const StyledFrame = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   border: black solid 1px;
   border-radius: 10px;
   text-align: center;
+  margin: 20px;
   padding: 10px;
 `;
