@@ -18,21 +18,26 @@ const Form = ({
   const handleCoordinateInput = (e, setInput) => {
     setInput(e.target.value);
   };
+
+  const allInputFieldsAreFilled =
+    maxLatitude & maxLongitute & minLatitude & minLongitute ? false : true;
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "red",
+        backgroundColor: "#19293c",
+        opacity: 1,
         margin: "20px",
         borderRadius: "10px",
         paddingBottom: "10px",
+        color: "white",
       }}
     >
       <StyledForm>
         <StyledLabel>
           <div>Min Longitude:</div>
-          <input
+          <StyledInput
             type="number"
             min="-90"
             required
@@ -42,7 +47,7 @@ const Form = ({
         </StyledLabel>
         <StyledLabel>
           Min Latitude:
-          <input
+          <StyledInput
             type="number"
             min="-180"
             required
@@ -52,7 +57,7 @@ const Form = ({
         </StyledLabel>
         <StyledLabel>
           Max Longitude:
-          <input
+          <StyledInput
             type="number"
             max="90"
             required
@@ -62,7 +67,7 @@ const Form = ({
         </StyledLabel>
         <StyledLabel>
           Max Latitude:
-          <input
+          <StyledInput
             type="number"
             max="180"
             required
@@ -72,6 +77,7 @@ const Form = ({
         </StyledLabel>
       </StyledForm>
       <StyledButton
+        disabled={allInputFieldsAreFilled}
         onClick={() =>
           getCoordinateData(buildCoordinateString, setData, setVisibleData)
         }
@@ -102,9 +108,27 @@ const StyledLabel = styled.label`
   align-items: center;
 `;
 
+const StyledInput = styled.input`
+  border: none;
+  outline-style: none;
+  height: 25px;
+  border-radius: 10px;
+  &:focus {
+    background-color: #dadfe8;
+  }
+`;
+
 const StyledButton = styled.button`
   width: 150px;
-  height: 30px;
+  height: 40px;
   align-self: center;
-  border-radius: 5px;
+  border-radius: 30px;
+  background-color: ${(props) => (props.disabled ? "#D3D3D3" : "#3990f7")};
+  color: ${(props) => (props.disabled ? "#666666" : "white")};
+  border: none;
+  font-size: 16px;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  &:hover {
+    background-color: ${(props) => (props.disabled ? "none" : "#0069d9")};
+  }
 `;

@@ -79,5 +79,5 @@ export default App;
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 70px;
+  margin-top: 20px;
 `;
