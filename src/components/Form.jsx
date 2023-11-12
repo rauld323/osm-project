@@ -21,6 +21,7 @@ const Form = ({
 
   const allInputFieldsAreFilled =
     maxLatitude && maxLongitute && minLatitude && minLongitute ? false : true;
+
   return (
     <StyledContainer>
       <StyledForm>
@@ -130,5 +131,9 @@ const StyledButton = styled.button`
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   &:hover {
     background-color: ${(props) => (props.disabled ? "none" : "#0069d9")};
+  }
+  &:active {
+    background-color: ${(props) => (props.disabled ? "none" : "white")};
+    color: #3990f7;
   }
 `;

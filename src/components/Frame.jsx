@@ -3,27 +3,30 @@ import styled from "styled-components";
 
 const Frame = ({ data, isLoading }) => {
   return (
-    <div style={{ margin: "0 20px" }}>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-around",
-        }}
-      >
+    <StyledContainer>
+      <StyledFrame>
         {data?.map((dataFeatures) => (
           <div>
             <StyledPre>{JSON.stringify(dataFeatures, null, 2)}</StyledPre>
           </div>
         ))}
-      </div>
+      </StyledFrame>
       <StyledText>{isLoading && "Loading..."}</StyledText>
-    </div>
+    </StyledContainer>
   );
 };
 
 export default Frame;
 
+const StyledContainer = styled.div`
+  margin: 0 20px;
+`;
+
+const StyledFrame = styled.div`
+  display: flex;
+  flexwrap: wrap;
+  justifycontent: space-around;
+`;
 const StyledText = styled.h1`
   display: flex;
   justify-content: center;

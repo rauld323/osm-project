@@ -29,4 +29,9 @@ const StyledScrollButton = styled.button`
   &:hover {
     background-color: #0069d9;
   }
+  &:active {
+    background-color: white;
+    color: #3990f7;
+    border: 1px solid #3990f7;
+  }
 `;

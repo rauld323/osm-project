@@ -10,12 +10,12 @@ export const getCoordinateData = async (
   const osm_api_url = `https://www.openstreetmap.org/api/0.6/map?bbox=${bbox}`;
 
   try {
-    const response = await axios.get(osm_api_url);
+    const osmResponse = await axios.get(osm_api_url);
 
-    const convertFeature = osmtogeojson(response.data);
-    const result = convertFeature.features;
-    setData(result);
-    setVisibleData(result.slice(0, 6));
+    const geojsonResponse = osmtogeojson(osmResponse.data);
+    const data = geojsonResponse.features;
+    setData(data);
+    setVisibleData(data.slice(0, 6));
   } catch (error) {
     console.error("Error fetching data:", error);
   }
