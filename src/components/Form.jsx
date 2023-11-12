@@ -26,7 +26,7 @@ const Form = ({
     <StyledContainer>
       <StyledForm>
         <StyledLabel>
-          <div>Min Longitude:</div>
+          Min Longitude
           <StyledInput
             type="number"
             min="-90"
@@ -36,7 +36,7 @@ const Form = ({
           />
         </StyledLabel>
         <StyledLabel>
-          Min Latitude:
+          Min Latitude
           <StyledInput
             type="number"
             min="-180"
@@ -46,7 +46,7 @@ const Form = ({
           />
         </StyledLabel>
         <StyledLabel>
-          Max Longitude:
+          Max Longitude
           <StyledInput
             type="number"
             max="90"
@@ -56,7 +56,7 @@ const Form = ({
           />
         </StyledLabel>
         <StyledLabel>
-          Max Latitude:
+          Max Latitude
           <StyledInput
             type="number"
             max="180"
@@ -65,15 +65,15 @@ const Form = ({
             onChange={(e) => handleCoordinateInput(e, setMaxLatitude)}
           />
         </StyledLabel>
+        <StyledButton
+          disabled={allInputFieldsAreFilled}
+          onClick={() =>
+            getCoordinateData(buildCoordinateString, setData, setVisibleData)
+          }
+        >
+          Submit
+        </StyledButton>
       </StyledForm>
-      <StyledButton
-        disabled={allInputFieldsAreFilled}
-        onClick={() =>
-          getCoordinateData(buildCoordinateString, setData, setVisibleData)
-        }
-      >
-        Submit
-      </StyledButton>
     </StyledContainer>
   );
 };
@@ -114,6 +114,7 @@ const StyledInput = styled.input`
   outline-style: none;
   height: 25px;
   border-radius: 10px;
+  text-align: center;
   &:focus {
     background-color: #dadfe8;
   }
