@@ -3,6 +3,7 @@ import styled from "styled-components";
 import EmptyFrame from "./components/EmptyFrame";
 import Frame from "./components/Frame";
 import Form from "./components/Form";
+import ScrollButton from "./components/ScrollButton";
 
 function App() {
   const [data, setData] = useState(null);
@@ -69,6 +70,7 @@ function App() {
         ) : (
           <EmptyFrame />
         )}
+        {data && <ScrollButton />}
       </StyledContainer>
     </div>
   );
