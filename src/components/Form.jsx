@@ -20,20 +20,9 @@ const Form = ({
   };
 
   const allInputFieldsAreFilled =
-    maxLatitude & maxLongitute & minLatitude & minLongitute ? false : true;
+    maxLatitude && maxLongitute && minLatitude && minLongitute ? false : true;
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#19293c",
-        opacity: 1,
-        margin: "20px",
-        borderRadius: "10px",
-        paddingBottom: "10px",
-        color: "white",
-      }}
-    >
+    <StyledContainer>
       <StyledForm>
         <StyledLabel>
           <div>Min Longitude:</div>
@@ -84,11 +73,22 @@ const Form = ({
       >
         Submit
       </StyledButton>
-    </div>
+    </StyledContainer>
   );
 };
 
 export default Form;
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #19293c;
+  opacity: 1;
+  margin: 20px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  color: white;
+`;
 
 const StyledForm = styled.div`
   display: flex;
