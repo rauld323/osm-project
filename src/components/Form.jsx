@@ -14,6 +14,7 @@ const Form = ({
   setMinLatitude,
   setMaxLongitute,
   setMaxLatitude,
+  setError,
 }) => {
   const handleCoordinateInput = (e, setInput) => {
     setInput(e.target.value);
@@ -68,7 +69,12 @@ const Form = ({
         <StyledButton
           disabled={allInputFieldsAreFilled}
           onClick={() =>
-            getCoordinateData(buildCoordinateString, setData, setVisibleData)
+            getCoordinateData(
+              buildCoordinateString,
+              setData,
+              setVisibleData,
+              setError
+            )
           }
         >
           Submit

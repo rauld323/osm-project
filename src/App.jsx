@@ -9,6 +9,7 @@ function App() {
   const [data, setData] = useState(null);
   const [visibleData, setVisibleData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const [minLongitute, setMinLongitute] = useState("");
   const [minLatitude, setMinLatitude] = useState("");
@@ -57,6 +58,7 @@ function App() {
         maxLongitute={maxLongitute}
         buildCoordinateString={buildCoordinateString}
         setData={setData}
+        setError={setError}
         setVisibleData={setVisibleData}
         setMinLongitute={setMinLongitute}
         setMinLatitude={setMinLatitude}
@@ -66,9 +68,9 @@ function App() {
 
       <StyledContainer>
         {data ? (
-          <Frame data={visibleData} isLoading={isLoading} />
+          <Frame data={visibleData} isLoading={isLoading} error={error} />
         ) : (
-          <EmptyFrame />
+          <EmptyFrame data={visibleData} error={error} />
         )}
         {data && <ScrollButton />}
       </StyledContainer>
