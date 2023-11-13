@@ -16,9 +16,7 @@ function App() {
   const [maxLongitute, setMaxLongitute] = useState("");
   const [maxLatitude, setMaxLatitude] = useState("");
 
-  const buildCoordinateString = () => {
-    return `${minLongitute},${minLatitude},${maxLongitute},${maxLatitude}`;
-  };
+  const buildCoordinateString = `${minLongitute},${minLatitude},${maxLongitute},${maxLatitude}`;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
