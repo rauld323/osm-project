@@ -33,7 +33,7 @@ function App() {
       setIsLoading(true);
 
       setTimeout(() => {
-        const newData = data.slice(visibleData.length, visibleData.length + 8);
+        const newData = data.slice(visibleData.length, visibleData.length + 6);
         setVisibleData((prevData) => [...prevData, ...newData]);
         setIsLoading(false);
       }, 1000);
@@ -57,6 +57,7 @@ function App() {
         buildCoordinateString={buildCoordinateString}
         setData={setData}
         setError={setError}
+        setIsLoading={setIsLoading}
         setVisibleData={setVisibleData}
         setMinLongitute={setMinLongitute}
         setMinLatitude={setMinLatitude}

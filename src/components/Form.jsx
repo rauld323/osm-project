@@ -23,6 +23,16 @@ const Form = ({
   const allInputFieldsAreFilled =
     maxLatitude && maxLongitute && minLatitude && minLongitute ? false : true;
 
+  const handleSubmit = async (e) => {
+    try {
+      const newData = await getCoordinateData(buildCoordinateString);
+      setData(newData);
+      setVisibleData(newData.slice(0, 6));
+    } catch (err) {
+      setError(err);
+    }
+  };
+
   return (
     <StyledContainer>
       <StyledForm>
@@ -68,14 +78,7 @@ const Form = ({
         </StyledLabel>
         <StyledButton
           disabled={allInputFieldsAreFilled}
-          onClick={() =>
-            getCoordinateData(
-              buildCoordinateString,
-              setData,
-              setVisibleData,
-              setError
-            )
-          }
+          onClick={() => handleSubmit()}
         >
           Submit
         </StyledButton>
