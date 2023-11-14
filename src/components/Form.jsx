@@ -7,7 +7,6 @@ const Form = ({
   minLongitute,
   maxLatitude,
   maxLongitute,
-  buildCoordinateString,
   setData,
   setVisibleData,
   setMinLongitute,
@@ -16,6 +15,8 @@ const Form = ({
   setMaxLatitude,
   setError,
 }) => {
+  const buildCoordinateString = `${minLongitute},${minLatitude},${maxLongitute},${maxLatitude}`;
+
   const handleCoordinateInput = (e, setInput) => {
     setInput(e.target.value);
   };
