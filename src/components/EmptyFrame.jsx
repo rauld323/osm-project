@@ -18,9 +18,7 @@ const EmptyFrame = (error) => {
         and 180 and the minima must be less than the maxima. Also, maxium number
         of characters after decimal(.) is 4.
       </h5>
-      <h5>
-        ** Currently, the search feature can request only request small areas
-      </h5>
+      <h5>** Currently, the search feature can only request small areas.</h5>
     </FrameContainer>
   );
 };
