@@ -1,13 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
-const EmptyFrame = (error) => {
+interface IProps {
+  error: boolean;
+}
+
+const EmptyFrame: FC<IProps> = ({ error }) => {
   return (
     <FrameContainer>
       <StyledFrame>
         <h1>Input Latitudes and Longitudes</h1>
         <h3>Sample Coordinates: -0.1278, 51.5074, -0.1223, 51.5099 </h3>
-        {error.error && (
+        {error && (
           <>
             <StyledText>Please check your input numbers!</StyledText>
           </>

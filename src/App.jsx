@@ -9,7 +9,7 @@ function App() {
   const [data, setData] = useState(null);
   const [visibleData, setVisibleData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const [minLongitute, setMinLongitute] = useState("");
   const [minLatitude, setMinLatitude] = useState("");
@@ -66,7 +66,7 @@ function App() {
         {data ? (
           <Frame data={visibleData} isLoading={isLoading} error={error} />
         ) : (
-          <EmptyFrame data={visibleData} error={error} />
+          <EmptyFrame error={error} />
         )}
         {data && <ScrollButton />}
       </StyledContainer>

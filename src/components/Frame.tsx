@@ -1,7 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
-const Frame = ({ data, isLoading }) => {
+interface IProps {
+  data?: [];
+  isLoading: boolean;
+}
+
+const Frame: FC<IProps> = ({ data, isLoading }) => {
   return (
     <StyledContainer>
       <StlyedFrame>
