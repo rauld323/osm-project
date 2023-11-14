@@ -27,7 +27,7 @@ function App() {
   };
 
   const loadMoreData = () => {
-    if (!isLoading) {
+    if (!isLoading && visibleData.length < data.length) {
       setIsLoading(true);
 
       setTimeout(() => {
